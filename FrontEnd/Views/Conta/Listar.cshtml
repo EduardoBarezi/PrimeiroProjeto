@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<FrontEnd.Models.Conta>
+
+@{
     ViewData["Title"] = "Teste";
     Layout = "~/Views/Layout/_LayoutPadrao.cshtml";
 }
@@ -7,29 +9,26 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Descrição</th>
+            <th scope="col"></th>
         </tr>
     </thead>
+
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td></td>
-        </tr>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <th scope="row">@item.Descricao</th>
+                    <td>
+                        <a asp-controller="Conta" asp-action="Excluir" asp-routeid="@item.Id" class="btn btn-primary">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        }
     </tbody>
 </table>
