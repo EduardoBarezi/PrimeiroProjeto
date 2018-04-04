@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Apresentacao.Models.Conta>
+
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Layout/_LayoutPadrao.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <th scope="row">@item.Descricao</th>
+                    <td>
+                        <a asp-controller="Conta" asp-action="Excluir" asp-routeid="@item.Id" class="btn btn-primary">
+                            Excluir
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+
